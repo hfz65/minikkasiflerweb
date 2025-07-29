@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Yeni Bilmece Ekle</h2>
+<form method="post">
+    <input type="text" name="soru" class="form-control" placeholder="Soru" required>
+    <input type="text" name="cevap" class="form-control mt-2" placeholder="Cevap" required>
+    <input type="text" name="kategori" class="form-control mt-2" placeholder="Kategori (isteğe bağlı)">
+    <button type="submit" class="btn btn-success mt-2">Ekle</button>
+</form>
+
+<hr>
+
+<h3 class="mt-4">Eklenmiş Bilmeceler</h3>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Soru</th>
+                <th>Cevap</th>
+                <th>Kategori</th>
+                <th>İşlem</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for bilmece in bilmeceler %}
+            <tr>
+                <td>{{ bilmece.soru }}</td>
+                <td>{{ bilmece.cevap }}</td>
+                <td>{{ bilmece.kategori or "-" }}</td>
+                <td>
+                    <a href="{{ url_for('admin.admin_bilmece_duzenle', id=bilmece.id) }}" class="btn btn-sm btn-warning">✏️</a>
+                    <a href="{{ url_for('admin.admin_bilmece_sil', id=bilmece.id) }}" class="btn btn-sm btn-danger" onclick="return confirm('Bu bilmeceyi silmek istediğine emin misin?')">🗑</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

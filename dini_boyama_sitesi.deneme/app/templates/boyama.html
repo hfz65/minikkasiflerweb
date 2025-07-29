@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Boyama Sayfaları</h2>
+
+<!-- 🔍 Arama Kutusu -->
+<form method="get" class="mb-4">
+    <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Başlık veya açıklamada ara..." value="{{ arama or '' }}">
+        <button type="submit" class="btn btn-outline-secondary">Ara</button>
+    </div>
+</form>
+
+<!-- 🎨 Sonuçlar -->
+<div class="row">
+{% if sayfalar %}
+    {% for sayfa in sayfalar %}
+    <div class="col-md-3 mb-4">
+        <div class="card">
+            <img src="{{ url_for('static', filename='uploads/' + sayfa.resim_yolu) }}" class="card-img-top" alt="{{ sayfa.baslik }}">
+            <div class="card-body">
+                <h5 class="card-title">{{ sayfa.baslik }}</h5>
+                <p class="card-text">{{ sayfa.aciklama }}</p>
+                <a href="{{ url_for('static', filename='uploads/' + sayfa.resim_yolu) }}" class="btn btn-primary" download>⬇️ İndir</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+{% else %}
+    <p class="text-muted">Hiçbir boyama sayfası bulunamadı.</p>
+{% endif %}
+</div>
+{% endblock %}

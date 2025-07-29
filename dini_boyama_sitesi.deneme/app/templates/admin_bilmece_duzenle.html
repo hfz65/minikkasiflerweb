@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Bilmece Düzenle</h2>
+<form method="post">
+    <label for="soru">Soru</label>
+    <input type="text" name="soru" class="form-control" value="{{ bilmece.soru }}" required>
+
+    <label for="cevap" class="mt-2">Cevap</label>
+    <input type="text" name="cevap" class="form-control" value="{{ bilmece.cevap }}" required>
+
+    <label for="kategori" class="mt-2">Kategori</label>
+    <input type="text" name="kategori" class="form-control" value="{{ bilmece.kategori }}">
+
+    <button type="submit" class="btn btn-primary mt-3">Kaydet</button>
+    <a href="{{ url_for('admin.admin_bilmeceler') }}" class="btn btn-secondary mt-3">İptal</a>
+</form>
+{% endblock %}

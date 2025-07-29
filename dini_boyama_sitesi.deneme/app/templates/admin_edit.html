@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Boyama Sayfasını Düzenle</h2>
+<form method="post">
+    <input type="text" name="baslik" class="form-control" value="{{ sayfa.baslik }}" required>
+    <textarea name="aciklama" class="form-control mt-2">{{ sayfa.aciklama }}</textarea>
+    <button type="submit" class="btn btn-primary mt-2">Kaydet</button>
+</form>
+<a href="{{ url_for('admin.admin_panel') }}" class="btn btn-secondary mt-2">Geri</a>
+{% endblock %}

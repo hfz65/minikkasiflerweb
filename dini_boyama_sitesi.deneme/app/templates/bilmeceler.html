@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="mb-4 text-center">🧠 Eğlenceli Bilmeceler</h2>
+
+<div class="row">
+    {% for bilmece in bilmeceler %}
+    <div class="col-md-6 col-lg-4 mb-4">
+        <div class="card bilmeceler-card shadow-sm" onclick="toggleCevap(this)">
+            <div class="card-body">
+                <h5 class="card-title text-primary">🟣 Bilmece</h5>
+                <p class="card-text bilmece-soru">{{ bilmece.soru }}</p>
+                <p class="card-text bilmece-cevap text-success" style="display: none;">
+                    <strong>Cevap:</strong> {{ bilmece.cevap }}
+                </p>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+<style>
+    .bilmeceler-card {
+        cursor: pointer;
+        border-left: 5px solid #ffc107;
+        background: #fff9e6;
+        transition: all 0.3s ease;
+        border-radius: 15px;
+    }
+    .bilmeceler-card:hover {
+        transform: scale(1.02);
+        background-color: #fff3cd;
+    }
+</style>
+
+<script>
+    function toggleCevap(card) {
+        const cevap = card.querySelector(".bilmece-cevap");
+        if (cevap.style.display === "none") {
+            cevap.style.display = "block";
+        } else {
+            cevap.style.display = "none";
+        }
+    }
+</script>
+{% endblock %}

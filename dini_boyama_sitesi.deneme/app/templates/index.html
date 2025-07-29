@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <!-- 🏷️ Başlık -->
+    <h1 style="font-family: 'Comic Sans MS', cursive; color: #2c3e50;">
+        🕌 Hoş Geldiniz Minik Kaşifler!
+    </h1>
+    <p class="mt-2 text-muted fs-5">Eğlenceli ve öğretici içeriklerle dolu bir dünyaya adım atın! 🎒</p>
+
+    <!-- 🎨 Görsel -->
+    <img src="{{ url_for('static', filename='img/child_welcome.png') }}" alt="Çocuk Gülümseme"
+         class="my-4 shadow rounded" style="max-width: 280px; border: 4px dashed #ffd966; background-color: #fffef5; padding: 10px;">
+
+    <!-- 🔘 Butonlar -->
+    <div class="d-flex justify-content-center gap-4">
+        <a href="{{ url_for('main.boyama_sayfalari') }}" class="btn btn-lg btn-success shadow rounded-pill px-4 py-2"
+           style="font-family: 'Comic Sans MS'; font-size: 1.2rem; transition: 0.3s;">
+            🎨 Boyama Sayfaları
+        </a>
+        <a href="{{ url_for('main.bilmeceler') }}" class="btn btn-lg btn-info shadow rounded-pill px-4 py-2"
+           style="font-family: 'Comic Sans MS'; font-size: 1.2rem; transition: 0.3s;">
+            🧠 Bilmeceler
+        </a>
+    </div>
+</div>
+
+<!-- ✨ Stil: hover efekti -->
+<style>
+    .btn:hover {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+</style>
+{% endblock %}
